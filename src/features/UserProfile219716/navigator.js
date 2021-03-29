@@ -1,23 +1,19 @@
-import { createStackNavigator } from "react-navigation-stack";
+import React from "react";
+import { createStackNavigator } from 'react-navigation-stack';
+import { SlideMenuIcon } from '../../navigator/slideMenuIcon';
+import UserProfile from './index';
 
-import Profile1 from "./screens/profile1";
-import Profile2 from "./screens/profile2";
-import Profile3 from "./screens/profile3";
-import SlideShow from "./screens/slideShow";
-
-import Home from "./screens";
-
-export default ProfilesBlueprintNavigator = createStackNavigator(
+export default (UserNavigator = createStackNavigator(
   {
-    Home: { screen: Home },
-    Profile1: { screen: Profile1 },
-    Profile2: { screen: Profile2 },
-    Profile3: { screen: Profile3 },
-    SlideShow: { screen: SlideShow },
-
-
+    UserProfile: {
+      screen: UserProfile,
+      navigationOptions: ({ navigation }) => ({
+        title: 'User Profile',
+        headerLeft: <SlideMenuIcon navigationProps={navigation} />,
+      }),
+    },
   },
   {
-    initialRouteName: "Home"
-  }
-);
+    initialRouteName: 'UserProfile',
+  },
+));
